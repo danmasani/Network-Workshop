@@ -140,7 +140,102 @@ edge.col=rgb(0,0,0,.3),
 vertex.col=col,vertex.cex=.5)
 dev.off()
 
+#####################
+## NLIs
+#####################
 
+star<-network(cbind(rep(1,7), matrix(rep(0,times=6,each=7), nc=6,nr=7)), directed=FALSE)
+
+plot(star,main="Undirected Star", label=1:7, edge.col=rgb(0,0,0,.3))
+
+set.seed(9902211)
+gplot(net<-rgraph(5),main="directed",label=1:5,edge.col=rgb(0,0,0,.3))
+
+
+set.seed(9902211)
+gplot(symmetrize(net[,]),main="directed", label=1:5,edge.col=rgb(0,0,0,.3))
+sna::geodist(symmetrize(net[,]))
+
+set.seed(9902211)
+plot(star,main="Undirected Star", label=1:7, edge.col=rgb(0,0,0,.3))
+gplot(symmetrize(net[,]),main="directed", label=1:5,edge.col=rgb(0,0,0,.3))
+
+#################
+## Extra R-Code for Centrality
+#################
+
+data(mids_1993)
+data(contig_1993)
+#
+#Basic centrality indices: degree, betweenness, and closeness-------------------
+#
+# We begin with the simplest case: degree
+degree(mids_1993)                                        # Default: total degree
+ideg <- degree(mids_1993, cmode="indegree")              # Indegree for MIDs
+odeg <- degree(mids_1993, cmode="outdegree")             # Outdegree for MIDs
+all(degree(mids_1993) == ideg+odeg)                      # In + out = total?
+
+# Once centrality scores are computed, we can handle them using standard R
+# methods:
+plot(ideg, odeg, type="n", xlab="Incoming MIDs", ylab="Outgoing MIDs")
+abline(0, 1, lty=3)
+text(jitter(ideg), jitter(odeg), network.vertex.names(contig_1993), cex=0.75,
+     col=2)   #Plot index by odeg
+
+
+#Plot simple histograms of the degree distribution:
+pdf("simpleHistIndOut.pdf")
+par(mfrow=c(2,2))                                       # Set up a 2x2 display
+hist(ideg, xlab="Indegree", main="Indegree Distribution", prob=TRUE)
+hist(odeg, xlab="Outdegree", main="Outdegree Distribution", prob=TRUE)
+hist(ideg+odeg, xlab="Total Degree", main="Total Degree Distribution",
+     prob=TRUE)
+dev.off()
+
+
+
+# Centrality scores can also be used with other sna routines, e.g., gplot
+gplot(mids_1993, vertex.cex=(ideg+odeg)^0.5/2, vertex.sides=50,
+      boxed.labels=FALSE,label.cex=0.4,
+      vertex.col=rgb(odeg/max(odeg),0,ideg/max(ideg)),
+      label=network.vertex.names(mids_1993))
+
+# Betweenness and closeness are also popular measures
+bet <- betweenness(contig_1993, gmode="graph")       # Geographic betweenness
+bet
+gplot(contig_1993, vertex.cex=sqrt(bet)/25, gmode="graph")   # Use w/gplot
+clo <- closeness(contig_1993)                        # Geographic closeness
+clo                                                  # A large world after all?
+
+# Can use sna routines to explore alternatives to the common measures....
+closeness2 <- function(x){            # Create an alternate closeness function!
+  geo <- 1/geodist(x)$gdist         # Get the matrix of 1/geodesic distance
+  diag(geo) <- 0                    # Define self-ties as 0
+  apply(geo, 1, sum)                # Return sum(1/geodist) for each vertex
+}
+clo2 <- closeness2(contig_1993)       # Use our new function on contiguity data
+hist(clo2, xlab="Alt. Closeness", prob=TRUE)    # Much better behaved!
+cor(clo2, bet)                                  # Correlate with betweenness
+plot(clo2, bet)                            # Plot the bivariate relationship
+
+#For more information....
+?betweenness
+?bonpow
+?closeness
+?degree
+?evcent
+?graphcent
+?infocent
+?prestige
+?stresscent
+#################
+## Extra R-Code for Centrality
+#################
+
+
+#####################
+## GLIs
+#####################
 undirected<-rgraph(10,mode="graph")
 directed<-rgraph(10,mode="digraph")
 gden(undirected,mode="graph")
