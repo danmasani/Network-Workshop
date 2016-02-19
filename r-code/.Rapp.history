@@ -410,3 +410,5 @@ vertex.col=col,vertex.cex=.5)#
 dev.off()
 2*480
 960/2
+library(sna)
+help(closeness)
