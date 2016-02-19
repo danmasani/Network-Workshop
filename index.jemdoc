@@ -1,0 +1,41 @@
+# jemdoc: menu{MENU}{index.html}
+# jemdoc: addcss{jemdoc.css}
+= Network Methods Workshop
+== Social Network Analysis: Descriptives to Statistical Inference
+
+~~~
+{}{img_left}{images/umnDept.png}{UMN Department}{480px}{480px}{}
+== Overview
+This is the webpage for [http://users.stat.umn.edu/~almquist Zack Almquist]'s workshop on [https://en.wikipedia.org/wiki/Social_network_analysis Social Network Analysis] for the MPC Inequality and Methods workshop on February 19, 2016. All R-Code and slides are available at [https://github.com/zalmquist/Network-Workshop Github]. This workshop is largely based on the first several weeks of my Social Network Analysis course offered at the University of Minnesota (the syllabus can be found [http://users.stat.umn.edu/~almquist/syllabi/soc_8412_syl.pdf here]).
+
+~~~
+
+== Useful Links
+
+=== Statnet Workshops
+
+- [https://statnet.org/trac Statnet Wiki]
+- [https://www.jstatsoft.org/issue/view/v024 Statnet Special Issue in JoSS]
+
+=== Social Network Analysis Online Tutorials
+- [http://faculty.ucr.edu/~hanneman/nettext/ Hanneman's 'Introduction to social network methods]
+
+=== Social Network Analysis Books
+- [http://www.amazon.com/Social-Network-Analysis-Applications-Structural/dp/0521387078/ Wasserman and Faust's Social Network Analysis: Methods and Applications]
+
+
+
+~~~
+{}{raw}
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-4141868-9', 'auto');
+ga('send', 'pageview');
+
+</script>
+~~~
