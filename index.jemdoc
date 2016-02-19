@@ -1,7 +1,7 @@
 # jemdoc: menu{MENU}{index.html}
 # jemdoc: addcss{jemdoc.css}
 = Network Methods Workshop
-== Social Network Analysis: Descriptives to Statistical Inference
+== Social Network Analysis: From Descriptives to Statistical Inference
 
 ~~~
 {}{img_left}{images/umnDept.png}{UMN Department}{480px}{480px}{}
