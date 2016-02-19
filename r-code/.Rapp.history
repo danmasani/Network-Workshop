@@ -362,3 +362,51 @@ col<-rep(rgb(0,1,0,1),length(save$breaks))#
 col[save$breaks<=qt[1]]<-col[save$breaks>=qt[4]]<-rgb(1,0,0,1)#
 col[save$breaks<=qt[2] & save$breaks>qt[1]]<-col[save$breaks>=qt[3] & save$breaks<qt[4] ]<-rgb(1,0,0,.7)#
 hist(baselineDensity, main="Baseline Density Distribution, N=20", xlab="Density",probability=TRUE,breaks=10,col=col)
+load("data/topic.Rda")#
+net<-network(topic,bipartite=TRUE)#
+col<-rep(NA,network.size(net))#
+col[1:NROW(topic)]<-"blue"#
+col[(NROW(topic)+1):length(col)]<-"red"#
+#
+plot(net,label="vertex.names",label.cex=.4, #
+edge.col=rgb(0,0,0,.2), #
+vertex.col=col)
+library(network)
+library(sna)
+load("data/topic.Rda")#
+net<-network(topic,bipartite=TRUE)#
+col<-rep(NA,network.size(net))#
+col[1:NROW(topic)]<-"blue"#
+col[(NROW(topic)+1):length(col)]<-"red"#
+#
+plot(net,label="vertex.names",label.cex=.4, #
+edge.col=rgb(0,0,0,.2), #
+vertex.col=col)
+help(png)
+help(par)
+png(filename = "umnDept.png", width = 2*480, height = 2*480)#
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(net,label="vertex.names",label.cex=.4, #
+edge.col=rgb(0,0,0,.2), #
+vertex.col=col)#
+dev.off()
+png(filename = "umnDept.png", width = 2*480, height = 2*480)#
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(net,label="vertex.names",label.cex=.8, #
+edge.col=rgb(0,0,0,.2), #
+vertex.col=col,vertex.cex=.5)#
+dev.off()
+png(filename = "umnDept.png", width = 2*480, height = 2*480)#
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(net,label="vertex.names",label.cex=1, #
+edge.col=rgb(0,0,0,.4), #
+vertex.col=col,vertex.cex=.5)#
+dev.off()
+png(filename = "umnDept.png", width = 2*480, height = 2*480)#
+par(mar=c(0, 0, 0, 0) + 0.1)#
+plot(net,label="vertex.names",label.cex=.9, #
+edge.col=rgb(0,0,0,.3), #
+vertex.col=col,vertex.cex=.5)#
+dev.off()
+2*480
+960/2

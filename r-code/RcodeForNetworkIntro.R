@@ -132,6 +132,14 @@ plot(net,label="vertex.names",label.cex=.4,
 edge.col=rgb(0,0,0,.2), 
 vertex.col=col)
 
+## Save as png
+png(filename = "umnDept.png", width = 2*480, height = 2*480)
+par(mar=c(0, 0, 0, 0) + 0.1)
+plot(net,label="vertex.names",label.cex=.9, 
+edge.col=rgb(0,0,0,.3), 
+vertex.col=col,vertex.cex=.5)
+dev.off()
+
 
 undirected<-rgraph(10,mode="graph")
 directed<-rgraph(10,mode="digraph")
